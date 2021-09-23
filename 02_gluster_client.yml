@@ -1,0 +1,9 @@
+---
+- hosts: gluster-client
+  become: yes
+  tags: 
+    - gluster
+    - gluster_client
+  roles:
+    - gluster-client
+

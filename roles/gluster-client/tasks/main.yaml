@@ -1,0 +1,7 @@
+
+- name: installing gluster repo
+  yum: name=centos-release-gluster state=present
+
+- name: installing gluster client
+  yum: name=glusterfs-client state=present
+

@@ -1,0 +1,7 @@
+---
+- hosts: gluster-server
+  become: yes
+  tags: gluster
+  roles:
+    - gluster-server
+

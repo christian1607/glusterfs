@@ -1,0 +1,16 @@
+
+- name: installing gluster repo
+  yum: name=centos-release-gluster state=present
+
+- name: installing gluster server
+  yum: name=glusterfs-server state=present
+
+- name: ensure glusterd is active
+  service: name=glusterd state=started enabled=true
+
+- name: add gluster server {{ item }} hostname
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ hostvars[item]['ansible_host']  }} {{ hostvars[item]['hostname'] }}"
+  with_items: 
+    - "{{ groups['gluster-server'] }}"
